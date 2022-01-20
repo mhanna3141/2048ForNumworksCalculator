@@ -126,33 +126,41 @@ def getNoneTileCords():
     return locations
 
 
-def movementCheck():
+def startGame():
     left = False
     right = False
     down = False
     up = False
+    while True:
+        if keydown(KEY_LEFT):
+            left = True
+        elif keydown(KEY_RIGHT):
+            right = True
+        elif keydown(KEY_UP):
+            up = True
+        elif keydown(KEY_DOWN):
+            down = True
 
-    if keydown(KEY_LEFT):
-        left = True
-    elif keydown(KEY_RIGHT):
-        right = True
-    elif keydown(KEY_UP):
-        up = True
-    elif keydown(KEY_DOWN):
-        down = True
-
-    if not keydown(KEY_LEFT) and left:
-        shiftGameGrid("LEFT")
-    elif not keydown(KEY_RIGHT) and right:
-        shiftGameGrid("RIGHT")
-    elif not keydown(KEY_UP) and up:
-        shiftGameGrid("UP")
-    elif not keydown(KEY_DOWN) and down:
-        shiftGameGrid("DOWN")
-
-
-    addRandomTile()
-    drawSquares()
+        if not keydown(KEY_LEFT) and left:
+            shiftGameGrid("LEFT")
+            addRandomTile()
+            drawSquares()
+            left = False
+        elif not keydown(KEY_RIGHT) and right:
+            shiftGameGrid("RIGHT")
+            addRandomTile()
+            drawSquares()
+            right = False
+        elif not keydown(KEY_UP) and up:
+            shiftGameGrid("UP")
+            addRandomTile()
+            drawSquares()
+            down = False
+        elif not keydown(KEY_DOWN) and down:
+            shiftGameGrid("DOWN")
+            addRandomTile()
+            drawSquares()
+            up = False
 
 
 colorDict = {
