@@ -1,3 +1,4 @@
+from kandinsky import *
 
 
 def shiftListRight(givenList):
@@ -81,20 +82,44 @@ def shiftGameGrid(direction):
                 gameGrid[rowIndex][columnIndex] = sendList[rowIndex]
 
 
+def drawSquares():
+    startx = 10
+    starty = 10
+    squareDims = 30
+    extraSpace = 3
+    for i in range(gameGridDim):
+        for j in range(gameGridDim):
+
+            fill_rect(startx + j * (squareDims + extraSpace),
+                      starty + i * (squareDims + extraSpace),
+                      squareDims,
+                      squareDims,
+                      colorDict[gameGrid[i][j]])
+
+
+colorDict = {
+    None: (204, 192, 179),
+    2: (238, 228, 218),
+    4: (237, 224, 200),
+    8: (242, 177, 121),
+    16: (245, 149, 99),
+    32: (246, 124, 95),
+    64: (246, 94, 59),
+    128: (237, 207, 114),
+    256: (237, 204, 97),
+    512: (237, 200, 80),
+    1024: (237, 197, 63),
+    2048: (237, 194, 46),
+    4094: (0, 0, 0)
+}
+
 gameGridDim = 4
 
 gameGrid = [
-    [None, None, 2, 2],
+    [None, None, None, None],
     [2, None, None, None],
     [4, 4, 8, 4],
     [16, None, 2, None]
 ]
-
-print(shiftListRight([2, 2, 2, 2]))
-print()
-for row in gameGrid:
-    print(row)
-shiftGameGrid("UP")
-print()
-for row in gameGrid:
-    print(row)
+drawSquares()
+tk.mainloop()
