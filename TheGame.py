@@ -1,4 +1,5 @@
 from kandinsky import *
+from random import randint, choice
 
 
 def shiftListRight(givenList):
@@ -97,6 +98,31 @@ def drawSquares():
                       colorDict[gameGrid[i][j]])
 
 
+def addRandomTile():
+
+    emptyLocations = getNoneTileCords()
+
+    # space for a new tile
+    if emptyLocations:
+        if randint(1, 10) < 10:
+            tile = 4
+        else:
+            tile = 2
+
+        selectedSpot = choice(emptyLocations)
+        gameGrid[selectedSpot[0]][selectedSpot[1]] = tile
+
+
+# returns a list full of where the empty tiles are
+def getNoneTileCords():
+    locations = []
+    for rowIndex in range(len(gameGrid)):
+        for columnIndex in range(len(gameGrid[rowIndex])):
+            if gameGrid[rowIndex][columnIndex] is None:
+                locations.append((rowIndex, columnIndex))
+    return locations
+
+
 colorDict = {
     None: (204, 192, 179),
     2: (238, 228, 218),
@@ -117,9 +143,13 @@ gameGridDim = 4
 
 gameGrid = [
     [None, None, None, None],
-    [2, None, None, None],
-    [4, 4, 8, 4],
-    [16, None, 2, None]
+    [None, None, None, None],
+    [None, None, None, None],
+    [None, None, None, None]
 ]
+
+addRandomTile()
+addRandomTile()
 drawSquares()
+
 tk.mainloop()
