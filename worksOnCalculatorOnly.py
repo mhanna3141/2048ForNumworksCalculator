@@ -155,28 +155,29 @@ def startGame():
             shiftGameGrid("UP")
             addRandomTile()
             drawSquares()
-            down = False
+            up = False
         elif not keydown(KEY_DOWN) and down:
             shiftGameGrid("DOWN")
             addRandomTile()
             drawSquares()
-            up = False
+            down = False
 
 
 colorDict = {
     None: (204, 192, 179),
-    2: (238, 228, 218),
-    4: (237, 224, 200),
-    8: (242, 177, 121),
-    16: (245, 149, 99),
-    32: (246, 124, 95),
-    64: (246, 94, 59),
-    128: (237, 207, 114),
-    256: (237, 204, 97),
-    512: (237, 200, 80),
-    1024: (237, 197, 63),
-    2048: (237, 194, 46),
-    4094: (0, 0, 0)
+    2: (255, 227, 150),
+    4: (255, 189, 8),
+    8: (237, 157, 88),
+    16: (250, 81, 42),
+    32: (245, 22, 148),
+    64: (200, 20, 245),
+    128: (95, 17, 250),
+    256: (99, 138, 255),
+    512: (47, 224, 168),
+    1024: (88, 191, 93),
+    2048: (176, 255, 97),
+    4094: (202, 214, 109),
+    8188: (0, 0, 0)
 }
 
 gameGridDim = 4
@@ -192,5 +193,4 @@ addRandomTile()
 addRandomTile()
 drawSquares()
 
-while True:
-    movementCheck()
+startGame()
