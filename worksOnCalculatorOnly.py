@@ -127,15 +127,30 @@ def getNoneTileCords():
 
 
 def movementCheck():
+    left = False
+    right = False
+    down = False
+    up = False
 
     if keydown(KEY_LEFT):
-        shiftGameGrid("LEFT")
+        left = True
     elif keydown(KEY_RIGHT):
-        shiftGameGrid("RIGHT")
+        right = True
     elif keydown(KEY_UP):
-        shiftGameGrid("UP")
+        up = True
     elif keydown(KEY_DOWN):
+        down = True
+
+    if not keydown(KEY_LEFT) and left:
+        shiftGameGrid("LEFT")
+    elif not keydown(KEY_RIGHT) and right:
+        shiftGameGrid("RIGHT")
+    elif not keydown(KEY_UP) and up:
+        shiftGameGrid("UP")
+    elif not keydown(KEY_DOWN) and down:
         shiftGameGrid("DOWN")
+
+
     addRandomTile()
     drawSquares()
 
