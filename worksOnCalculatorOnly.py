@@ -1,7 +1,6 @@
 from kandinsky import *
 from random import randint, choice
-# from ion import *
-# with calculator
+from ion import *
 
 
 def shiftListRight(givenList):
@@ -127,18 +126,7 @@ def getNoneTileCords():
     return locations
 
 
-# remove 5 variables with calculator
-KEY_LEFT = "Left"
-KEY_RIGHT = "Right"
-KEY_UP = "Up"
-KEY_DOWN = "Down"
-
-# remove function with calculator
-def keydown(something):
-    pass
-
-
-def movementCheck(event):
+def movementCheck():
 
     if keydown(KEY_LEFT):
         shiftGameGrid("LEFT")
@@ -181,7 +169,5 @@ addRandomTile()
 addRandomTile()
 drawSquares()
 
-
-# remove both lines when using calculator
-tk.bind("<KeyRelease>", movementCheck)
-tk.mainloop()
+while True:
+    movementCheck()
